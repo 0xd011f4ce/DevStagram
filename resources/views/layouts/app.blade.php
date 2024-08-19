@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>@yield('title') | DevStagram</title>
+
+    @vite('resources/css/app.css')
 </head>
 
 <body>
-
 </body>
 
 </html>
