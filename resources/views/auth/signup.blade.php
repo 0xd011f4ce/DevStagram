@@ -9,7 +9,7 @@
         </div>
 
         <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-xl">
-            <form action="/signup" method="POST">
+            <form action="{{ route('signup') }}" method="POST">
                 @csrf
 
                 <div class="mb-5">

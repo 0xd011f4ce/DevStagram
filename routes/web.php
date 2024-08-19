@@ -8,5 +8,5 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::get("/signup", [SignupController::class, "index"]);
+Route::get("/signup", [SignupController::class, "index"])->name("signup");
 Route::post("/signup", [SignupController::class, "store"]);
