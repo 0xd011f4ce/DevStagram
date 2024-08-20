@@ -15,7 +15,8 @@ class PostController extends Controller implements HasMiddleware
 
     public function index(User $user, Request $request)
     {
-        dd($user);
-        return view("dashboard");
+        return view("dashboard", [
+            "user" => $user
+        ]);
     }
 }
