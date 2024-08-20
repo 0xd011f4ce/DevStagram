@@ -37,6 +37,9 @@ class SignupController extends Controller
             "password" => Hash::make($request->password),
         ]);
 
+        // authenticate user
+        auth()->attempt($request->only("email", "password"));
+
         return redirect()->route("posts.index");
     }
 }

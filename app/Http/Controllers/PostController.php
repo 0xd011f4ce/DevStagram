@@ -8,6 +8,6 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-        dd("Here be dragons...");
+        dd(auth()->user());
     }
 }
