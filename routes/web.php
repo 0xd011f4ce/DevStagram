@@ -14,5 +14,6 @@ Route::get("/signup", [SignupController::class, "index"])->name("signup");
 Route::post("/signup", [SignupController::class, "store"]);
 
 Route::get("/login", [LoginController::class, "index"])->name("login");
+Route::post("/login", [LoginController::class, "store"]);
 
 Route::get("/wall", [PostController::class, "index"])->name("posts.index");
