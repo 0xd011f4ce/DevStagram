@@ -18,7 +18,7 @@ class SignupController extends Controller
             "name" => "required|max:16",
             "username" => "required|unique:users|min:3|max:16",
             "email" => "required|unique:users|email|max:64",
-            "password" => "required|min:8|max:64",
+            "password" => "required|min:8|max:64|confirmed",
         ]);
     }
 }
