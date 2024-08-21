@@ -22,6 +22,6 @@ class PostController extends Controller implements HasMiddleware
 
     public function create()
     {
-        dd("Creating a post...");
+        return view("posts.create");
     }
 }
