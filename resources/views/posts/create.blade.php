@@ -2,12 +2,19 @@
 
 @section('title', 'Create Post')
 
+@push('styles')
+    <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
+@endpush
+
 @section('content')
     <div class="md:flex md-items-center">
 
         <div class="md:w-1/2 px-10">
-            <form action="/images" id="dropzone"
-                class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center"></form>
+            <form action="{{ route('images.store') }}" id="dropzone"
+                class="dropzone border-dashed border-2 w-full h-96 rounded flex flex-col justify-center items-center"
+                method="POST" enctype="multipart/form-data">
+                @csrf
+            </form>
         </div>
 
         <div class="md:w-1/2 p-10 bg-white rounded-lg shadow-xl mt-10 md:mt-0">

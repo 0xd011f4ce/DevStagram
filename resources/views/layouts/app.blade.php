@@ -7,6 +7,8 @@
 
     <title>@yield('title') | DevStagram</title>
 
+    @stack('styles')
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
