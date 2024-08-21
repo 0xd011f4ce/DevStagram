@@ -16,7 +16,7 @@ class PostController extends Controller implements HasMiddleware
 
     public function index(User $user, Request $request)
     {
-        $posts = Post::where("user_id", $user->id)->get();
+        $posts = Post::where("user_id", $user->id)->paginate(8);
 
         return view("dashboard", [
             "user" => $user,
