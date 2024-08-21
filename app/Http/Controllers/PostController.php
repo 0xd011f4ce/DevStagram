@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -32,5 +33,14 @@ class PostController extends Controller implements HasMiddleware
             "description" => "required",
             "image" => "required"
         ]);
+
+        Post::create([
+            "title" => $request->title,
+            "description" => $request->description,
+            "image" => $request->image,
+            "user_id" => auth()->user()->id
+        ]);
+
+        return redirect()->route("posts.index", auth()->user()->username);
     }
 }
