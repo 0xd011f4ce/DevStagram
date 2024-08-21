@@ -24,4 +24,13 @@ class PostController extends Controller implements HasMiddleware
     {
         return view("posts.create");
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            "title" => "required|max:255",
+            "description" => "required",
+            "image" => "required"
+        ]);
+    }
 }
