@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Intervention\Image\Laravel\Facades\Image;
 
 class ImageController extends Controller
 {
@@ -10,6 +12,13 @@ class ImageController extends Controller
     {
         $image = $request->file("file");
 
-        return response()->json(["image" => $image->extension()]);
+        $nameImage = Str::uuid() . "." . $image->extension();
+
+        $imageServer = Image::read($image);
+        $imageServer->cover(1000, 1000);
+        $imagePath = public_path("uploads") . "/" . $nameImage;
+        $imageServer->save($imagePath);
+
+        return response()->json(["image" => $nameImage]);
     }
 }

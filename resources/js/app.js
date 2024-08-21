@@ -12,4 +12,6 @@ const dropzone = new Dropzone("#dropzone", {
 
 dropzone.on("sending", function (file, xhr, formData) {});
 
-dropzone.on("success", function (file, response) {});
+dropzone.on("success", function (file, response) {
+    console.log(response);
+});
