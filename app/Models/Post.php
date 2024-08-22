@@ -24,4 +24,9 @@ class Post extends Model
             "username"
         ]);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
