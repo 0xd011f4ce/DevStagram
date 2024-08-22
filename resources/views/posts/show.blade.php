@@ -29,6 +29,12 @@
                 @auth
                     <p class="text-xl font-bold text-center mb-4">Add a new Comment</p>
 
+                    @if (session('message'))
+                        <p class="bg-green-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                            {{ session('message') }}
+                        </p>
+                    @endif
+
                     <form action="{{ route('comment.store', ['post' => $post, 'user' => $user]) }}" method="POST">
                         @csrf
                         <div class="mb-5">
