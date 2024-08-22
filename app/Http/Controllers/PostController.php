@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
 
 class PostController extends Controller implements HasMiddleware
 {
     public static function middleware()
     {
-        return ["auth"];
+        return [
+            new Middleware("auth", except: ["show", "index"])
+        ];
     }
 
     public function index(User $user, Request $request)
