@@ -24,6 +24,28 @@
             </div>
         </div>
 
-        <div class="md:w-1/2"></div>
+        <div class="md:w-1/2 p-5">
+            <div class="shadow bg-white p-5 mb-5">
+                <p class="text-xl font-bold text-center mb-4">Add a new Comment</p>
+
+                <form action="#">
+                    @csrf
+                    <div class="mb-5">
+                        <label for="comment" class="mb-2 block uppercase text-gray-500 font-bold">Comment</label>
+                        <textarea id="comment" name="comment" placeholder="Add a new comment"
+                            class="border p-3 w-full rounded-lg @error('comment')border-red-500 @enderror"></textarea>
+
+                        @error('comment')
+                            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+
+                    <input type="submit" value="Add Comment"
+                        class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg">
+                </form>
+            </div>
+        </div>
     </div>
 @endsection
