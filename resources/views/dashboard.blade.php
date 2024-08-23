@@ -47,19 +47,22 @@
 
                 @auth
                     @if ($user->id !== auth()->user()->id)
-                        <form action="{{ route('users.follow', $user) }}" method="POST">
-                            @csrf
-                            <input type="submit"
-                                class="bg-blue-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
-                                value="follow">
-                        </form>
-                        <form action="{{ route('users.unfollow', $user) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <input type="submit"
-                                class="bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
-                                value="unfollow">
-                        </form>
+                        @if (!$user->following(auth()->user()))
+                            <form action="{{ route('users.follow', $user) }}" method="POST">
+                                @csrf
+                                <input type="submit"
+                                    class="bg-blue-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
+                                    value="follow">
+                            </form>
+                        @else
+                            <form action="{{ route('users.unfollow', $user) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit"
+                                    class="bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
+                                    value="unfollow">
+                            </form>
+                        @endif
                     @endif
                 @endauth
             </div>
