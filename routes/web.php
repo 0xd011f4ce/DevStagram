@@ -22,6 +22,10 @@ Route::get("/login", [LoginController::class, "index"])->name("login");
 Route::post("/login", [LoginController::class, "store"]);
 Route::post("/logout", [LogoutController::class, "store"])->name("logout");
 
+// profile
+Route::get("/edit-profile", [ProfileController::class, "index"])->name("profile.index");
+Route::post("/edit-profile", [ProfileController::class, "store"])->name("profile.store");
+
 Route::get("/{user:username}", [PostController::class, "index"])->name("posts.index");
 Route::get("/posts/create", [PostController::class, "create"])->name("posts.create");
 Route::post("/posts", [PostController::class, "store"])->name("posts.store");
@@ -35,7 +39,3 @@ Route::post("/images", [ImageController::class, "store"])->name("images.store");
 // likes
 Route::post("/posts/{post}/likes", [LikeController::class, "store"])->name("posts.likes.store");
 Route::delete("/posts/{post}/likes", [LikeController::class, "destroy"])->name("posts.likes.destroy");
-
-// profile
-Route::get("/{user:username}/edit-profile", [ProfileController::class, "index"])->name("profile.index");
-Route::post("/{user:username}/edit-profile", [ProfileController::class, "store"])->name("profile.store");

@@ -14,6 +14,6 @@ class ProfileController extends Controller implements HasMiddleware
 
     public function index()
     {
-        dd("Showing edit form...");
+        return view("profile.index");
     }
 }
