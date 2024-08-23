@@ -9,7 +9,8 @@
         <div class="w-full md:w-8/12 lg:w-6/12 flex flex-col items-center md:flex-row">
 
             <div class="w-8/12 lg:w-6/12 px-5">
-                <img src="{{ asset('img/usuario.svg') }}" alt="profile picture">
+                <img src="{{ $user->pfp ? asset('uploads/pfps') . '/' . $user->pfp : asset('img/usuario.svg') }}"
+                    alt="profile picture">
             </div>
 
             <div class="md:w-8/12 lg:w-6/12 px-5 md:flex md:flex-col md:justify-center py-10">
@@ -40,7 +41,7 @@
                 </p>
 
                 <p class="text-gray-800 text-sm mb-3 font-bold">
-                    0
+                    {{ $user->posts->count() }}
                     <span class="font-normal">Posts</span>
                 </p>
             </div>
