@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller implements HasMiddleware
 {
@@ -60,6 +61,11 @@ class PostController extends Controller implements HasMiddleware
 
     public function destroy(Post $post)
     {
-        dd("Deleting ", $post->id);
+        $response = Gate::inspect("delete", $post);
+
+        if ($response->allowed())
+            $post->delete();
+
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 }
