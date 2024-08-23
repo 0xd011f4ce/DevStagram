@@ -25,7 +25,9 @@
 
             @auth
                 @if ($post->user_id === auth()->user()->id)
-                    <form action="#">
+                    <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
                         <input type="submit" value="Delete post"
                             class="bg-red-500 hover:bg-red-600 p-2 rounded text-white font-bold mt-4 cursor-pointer">
                     </form>
