@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
-class HomeController extends Controller
+class HomeController extends Controller implements HasMiddleware
 {
+    public static function middleware()
+    {
+        return ["auth"];
+    }
+
     public function __invoke()
     {
         // obtain following users
