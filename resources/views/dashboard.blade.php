@@ -31,12 +31,14 @@
                 </div>
 
                 <p class="text-gray-800 text-sm mb-3 font-bold mt-5">
-                    0
-                    <span class="font-normal">Followers</span>
+                    {{ $user->followers->count() }}
+                    <span class="font-normal">
+                        @choice('follower|followers', $user->followers->count())
+                    </span>
                 </p>
 
                 <p class="text-gray-800 text-sm mb-3 font-bold">
-                    0
+                    {{ $user->following->count() }}
                     <span class="font-normal">Following</span>
                 </p>
 
@@ -47,7 +49,7 @@
 
                 @auth
                     @if ($user->id !== auth()->user()->id)
-                        @if (!$user->following(auth()->user()))
+                        @if (!$user->is_following(auth()->user()))
                             <form action="{{ route('users.follow', $user) }}" method="POST">
                                 @csrf
                                 <input type="submit"
