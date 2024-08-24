@@ -4,7 +4,7 @@ An instagram clone for developers, made with Laravel, Livewire, and Tailwind.
 
 ## Overview
 
-![[img/profile.png]]
+![](img/profile.png)
 
 This project was made to learn Laravel and some other components, like Livewire, and Tailwind, this is not a real project, and is not intended for actual use.
 
@@ -17,4 +17,4 @@ This project was made to learn Laravel and some other components, like Livewire,
 -   Like system
 -   Follow, and unfollow system
 
-![[img/post.png]]
+![](img/post.png)
